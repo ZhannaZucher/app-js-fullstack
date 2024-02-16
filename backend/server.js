@@ -1,5 +1,12 @@
 const express = require("express")
+const connectDB = require("./config/db")
 const port = 5000
+//allows access to var env from the entire project
+const dotenv = require("dotenv").config()
+
+//DB connexion
+connectDB()
+
 
 const app = express()
 
