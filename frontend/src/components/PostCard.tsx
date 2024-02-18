@@ -1,4 +1,5 @@
 import { Post } from "../../types"
+import LikePost from "./LikePost"
 
 type PostCardProps = {
   userId: string
@@ -22,6 +23,9 @@ const PostCard = ({ userId, post }: PostCardProps) => {
         <p>posté le {dateFormater(post.createdAt)}</p>
       </div>
       <p>{post.message}</p>
+      <div className="icons-part">
+        <LikePost post={post} userId={userId} />
+      </div>
     </div>
   )
 }
