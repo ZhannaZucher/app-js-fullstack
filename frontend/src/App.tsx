@@ -1,5 +1,6 @@
 import { useState } from "react"
 import NewPost from "./components/NewPost"
+import Thread from "./components/Thread"
 
 const App = () => {
   const [userId, setUserId] = useState("")
@@ -15,6 +16,7 @@ const App = () => {
         />
       </div>
       <NewPost userId={userId} />
+      <Thread userId={userId} />
     </div>
   )
 }
