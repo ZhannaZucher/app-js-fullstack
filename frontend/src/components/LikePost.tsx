@@ -1,14 +1,15 @@
 import axios from "axios"
 import { Post } from "../../types"
 import { useEffect, useState } from "react"
+import { selectUser, useAppSelector } from "../store/selectors"
 
 type LikePostProps = {
-  userId: string
   post: Post
 }
 
-const LikePost = ({ userId, post }: LikePostProps) => {
+const LikePost = ({ post }: LikePostProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false)
+  const userId = useAppSelector(selectUser)
 
   useEffect(() => {
     if (post.likers && userId) {

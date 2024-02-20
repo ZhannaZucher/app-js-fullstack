@@ -1,12 +1,11 @@
 import axios from "axios"
 import { useState } from "react"
+import { selectUser, useAppSelector } from "../store/selectors"
 
-type NewPostProps = {
-  userId: string
-}
-
-const NewPost = ({ userId }: NewPostProps) => {
+const NewPost = () => {
   const [message, setMessage] = useState("")
+  const userId = useAppSelector(selectUser)
+
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 

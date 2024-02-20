@@ -3,15 +3,16 @@ import { Post } from "../../types"
 import LikePost from "./LikePost"
 import axios from "axios"
 import DeletePost from "./DeletePost"
+import { selectUser, useAppSelector } from "../store/selectors"
 
 type PostCardProps = {
-  userId: string
   post: Post
 }
-const PostCard = ({ userId, post }: PostCardProps) => {
+const PostCard = ({ post }: PostCardProps) => {
   const [isAuthor, setIsAuthor] = useState<boolean>(false)
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [newMessage, setNewMessage] = useState("")
+  const userId = useAppSelector(selectUser)
 
   useEffect(() => {
     if (post.author === userId) {
@@ -65,7 +66,7 @@ const PostCard = ({ userId, post }: PostCardProps) => {
         <p>{newMessage ? newMessage : post.message}</p>
       )}
       <div className="icons-part">
-        <LikePost post={post} userId={userId} />
+        <LikePost post={post} />
         {isAuthor && (
           <div className="update-delete-icons">
             <span id="update-btn" onClick={() => setIsEditing(!isEditing)}>

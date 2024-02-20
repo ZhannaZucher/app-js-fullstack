@@ -1,9 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import NewPost from "./components/NewPost"
 import Thread from "./components/Thread"
+import { useAppDispatch } from "./store/selectors"
+import { getUser } from "./store/userSlice"
 
 const App = () => {
   const [userId, setUserId] = useState("")
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    userId && dispatch(getUser(userId))
+  }, [dispatch, userId])
 
   return (
     <div className="app-container">
@@ -15,8 +22,8 @@ const App = () => {
           onChange={(e) => setUserId(e.target.value)}
         />
       </div>
-      <NewPost userId={userId} />
-      <Thread userId={userId} />
+      <NewPost />
+      <Thread />
     </div>
   )
 }

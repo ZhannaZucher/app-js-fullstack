@@ -3,11 +3,9 @@ import { useEffect, useState } from "react"
 import { Post } from "../../types"
 import PostCard from "./PostCard"
 
-type ThreadProps = {
-  userId: string
-}
-const Thread = ({ userId }: ThreadProps) => {
+const Thread = () => {
   const [posts, setPosts] = useState<Post[]>([])
+
   useEffect(() => {
     axios.get("http://localhost:5000/post/").then((res) => setPosts(res.data))
   }, [])
@@ -17,7 +15,7 @@ const Thread = ({ userId }: ThreadProps) => {
       {posts
         ?.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .map((post) => (
-          <PostCard key={post._id} post={post} userId={userId} />
+          <PostCard key={post._id} post={post} />
         ))}
     </div>
   )
