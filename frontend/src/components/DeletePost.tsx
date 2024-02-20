@@ -5,8 +5,6 @@ type DeletePostProps = {
 }
 
 const DeletePost = ({ postId }: DeletePostProps) => {
-  console.log(postId)
-
   const handleDelete = () => {
     axios.delete(`http://localhost:5000/post/${postId}`)
   }
