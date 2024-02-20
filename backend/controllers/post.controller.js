@@ -14,7 +14,7 @@ module.exports.createPost = async (req, res) => {
 		message: req.body.message,
 		author: req.body.author
 	})
-	res.status(201).json({message: "Post created"})
+	res.status(201).json(post)
 }
 
 module.exports.editPost = async (req, res) => {
