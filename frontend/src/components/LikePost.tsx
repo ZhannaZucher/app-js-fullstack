@@ -10,20 +10,6 @@ type LikePostProps = {
 const LikePost = ({ userId, post }: LikePostProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false)
 
-  //   useEffect(() => {
-  //     const checkLikers = () => {
-  //       if (post.likers) {
-  //         if (userId && post.likers.includes(userId)) {
-  //           setIsLiked(true)
-  //         } else {
-  //           setIsLiked(false)
-  //         }
-  //         console.log(isLiked)
-  //       }
-  //     }
-  //     checkLikers()
-  //   }, [isLiked, post.likers, userId])
-
   useEffect(() => {
     if (post.likers && userId) {
       setIsLiked(post.likers.includes(userId))
