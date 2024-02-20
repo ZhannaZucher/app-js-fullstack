@@ -1,18 +1,22 @@
 import axios from "axios"
 import { useState } from "react"
-import { selectUser, useAppSelector } from "../store/selectors"
+import { selectUser, useAppDispatch, useAppSelector } from "../store/selectors"
+import { createPost } from "../store/postSlice"
 
 const NewPost = () => {
   const [message, setMessage] = useState("")
   const userId = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
 
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    axios.post("http://localhost:5000/post/", {
-      message,
-      author: userId,
-    })
+    axios
+      .post("http://localhost:5000/post/", {
+        message,
+        author: userId,
+      })
+      .then((res) => dispatch(createPost(res.data)))
     setMessage("") //reset form input
   }
 
