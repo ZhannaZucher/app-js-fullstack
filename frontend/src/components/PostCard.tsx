@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Post } from "../../types"
 import LikePost from "./LikePost"
 import axios from "axios"
+import DeletePost from "./DeletePost"
 
 type PostCardProps = {
   userId: string
@@ -70,6 +71,7 @@ const PostCard = ({ userId, post }: PostCardProps) => {
             <span id="update-btn" onClick={() => setIsEditing(!isEditing)}>
               &#10000;
             </span>
+            <DeletePost postId={post._id} />
           </div>
         )}
       </div>
