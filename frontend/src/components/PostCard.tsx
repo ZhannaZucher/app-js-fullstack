@@ -3,7 +3,8 @@ import { Post } from "../../types"
 import LikePost from "./LikePost"
 import axios from "axios"
 import DeletePost from "./DeletePost"
-import { selectUser, useAppSelector } from "../store/selectors"
+import { selectUser, useAppDispatch, useAppSelector } from "../store/selectors"
+import { editPost } from "../store/postSlice"
 
 type PostCardProps = {
   post: Post
@@ -13,6 +14,7 @@ const PostCard = ({ post }: PostCardProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [newMessage, setNewMessage] = useState("")
   const userId = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (post.author === userId) {
@@ -28,6 +30,7 @@ const PostCard = ({ post }: PostCardProps) => {
         message: newMessage,
         author: userId,
       })
+      dispatch(editPost([newMessage, post._id]))
     }
   }
 
