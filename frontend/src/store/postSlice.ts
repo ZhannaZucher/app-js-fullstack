@@ -31,8 +31,11 @@ export const postSlice = createSlice({
         }
       })
     },
+    deletePost: (state, action) => {
+      state.data = state.data.filter((post) => post._id !== action.payload)
+    },
   },
 })
 
-export const { getPosts, createPost, editPost } = postSlice.actions
+export const { getPosts, createPost, editPost, deletePost } = postSlice.actions
 export default postSlice.reducer
