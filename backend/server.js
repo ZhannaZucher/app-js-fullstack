@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 
-app.use("/post", require("./routes/post.routes"))
+app.use("/posts", require("./routes/post.routes"))
 
 //launch server
 app.listen(port, () => console.log(("Server tourne au port " + port)))

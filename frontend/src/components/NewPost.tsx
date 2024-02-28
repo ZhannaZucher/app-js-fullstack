@@ -12,7 +12,7 @@ const NewPost = () => {
     e.preventDefault()
 
     axios
-      .post("http://localhost:5000/post/", {
+      .post("http://localhost:5000/posts/", {
         message,
         author: userId,
       })

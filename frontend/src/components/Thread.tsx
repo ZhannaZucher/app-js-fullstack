@@ -11,7 +11,7 @@ const Thread = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/post/")
+      .get("http://localhost:5000/posts/")
       .then((res) => dispatch(getPosts(res.data)))
   }, [dispatch])
 

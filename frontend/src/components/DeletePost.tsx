@@ -9,7 +9,7 @@ type DeletePostProps = {
 const DeletePost = ({ postId }: DeletePostProps) => {
   const dispatch = useAppDispatch()
   const handleDelete = () => {
-    axios.delete(`http://localhost:5000/post/${postId}`)
+    axios.delete(`http://localhost:5000/posts/${postId}`)
     dispatch(deletePost(postId))
   }
   return (

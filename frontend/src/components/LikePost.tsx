@@ -20,13 +20,13 @@ const LikePost = ({ post }: LikePostProps) => {
   }, [post.likers, userId])
 
   const likePost = () => {
-    axios.patch(`http://localhost:5000/post/like-post/${post._id}`, { userId })
+    axios.patch(`http://localhost:5000/posts/like-post/${post._id}`, { userId })
     dispatch(likeAPost([userId, post._id]))
     setIsLiked(true)
   }
 
   const dislikePost = () => {
-    axios.patch(`http://localhost:5000/post/dislike-post/${post._id}`, {
+    axios.patch(`http://localhost:5000/posts/dislike-post/${post._id}`, {
       userId,
     })
     dispatch(dislikeAPost([userId, post._id]))

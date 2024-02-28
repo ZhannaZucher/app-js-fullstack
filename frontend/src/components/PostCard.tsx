@@ -26,7 +26,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
   const handleEdit = () => {
     if (newMessage) {
-      axios.put(`http://localhost:5000/post/${post._id}`, {
+      axios.put(`http://localhost:5000/posts/${post._id}`, {
         message: newMessage,
         author: userId,
       })
